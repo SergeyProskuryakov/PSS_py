@@ -1,5 +1,5 @@
 a = int(input('Введите а от 1 до 10: '))
-while (a != 10) and (a >= 1) and (a <= 10):
+while (a != 10) and (a >= 1) and (a < 10):
     a += 1
 else:
     print('a = ', a)
