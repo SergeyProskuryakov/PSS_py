@@ -1,6 +1,6 @@
 # докажите, что строка не является комментарием
 
 stroka = 'stroka'
-kommentariy = # kommentariy
+# kommentariy = # kommentariy
 print(stroka)
-print(kommentariy)
+# print(kommentariy)
