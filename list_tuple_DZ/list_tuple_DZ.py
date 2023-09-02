@@ -48,13 +48,14 @@ def main_func():
     while trying != number:
         sum_trying += 1
         trying = input('Введите 4-х значное число: ')
-        if not trying.isdigit():
-            print('Играем только числами!')
         if len(trying) == len(number):
-            bulls = sum_bulls_func(number, trying)
-            cows = sum_cows_func(number, trying)
-            print(bulls, ' бык' + word_forms.word_forms_func(bulls, ['', 'а', 'ов']))
-            print(cows, ' коров' + word_forms.word_forms_func(cows, ['а', 'ы', '']))
+            if not trying.isdigit():
+                print('Играем только числами!')
+            else:
+                bulls = sum_bulls_func(number, trying)
+                cows = sum_cows_func(number, trying)
+                print(bulls, ' бык' + word_forms.word_forms_func(bulls, ['', 'а', 'ов']))
+                print(cows, ' коров' + word_forms.word_forms_func(cows, ['а', 'ы', '']))
     return sum_trying
 
 len_number = 4
