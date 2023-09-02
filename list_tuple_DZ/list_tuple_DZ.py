@@ -36,7 +36,7 @@ def sum_bulls_func(bulls_number, bulls_trying):
 def sum_cows_func(cows_number, cows_trying):
     cows = 0
     for i in range(len(cows_number)):
-        if cows_trying[i] in cows_number:
+        if cows_trying[i] in cows_number and cows_trying[i] != cows_number[i]:
             cows += 1
     return cows
 
