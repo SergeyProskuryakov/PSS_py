@@ -1,32 +1,45 @@
 # Игра "Поле чудес"
 
-word = ['p', 'y', 't', 'h', 'o', 'n']
-answer = ''
-print('Наша любимая змея?')
+import random
 
-while answer != word[0]:
-    answer = input('Введите первую букву: ')
-print('Верно! Первая буква - ' + answer)
+f = open('questions.txt', encoding='UTF-8')
+a = open('answers.txt', encoding='UTF-8')
 
-while answer != word[1]:
-    answer = input('Введите вторую букву: ')
-print('Верно! Вторая буква - ' + answer)
+questions = f.read().split('\n') # прочитали весь файл, поделили его на строки
+f.close()
+q = random.randint(0, len(questions))
+answers = a.read().split('\n')
+a.close()
 
-while answer != word[2]:
-    answer = input('Введите третью букву: ')
-print('Верно! Третья буква - ' + answer)
+word = answers[q]
+# word = 'python'
+hint = list('*' * len(word))
+print(questions[q])
+counter = 0
+while '*' in hint: # остались неугаданные буквы
+    print(''.join(hint))
+    answer = input('Введите вашу букву: ')
+    new_hint = []
+    for i in range(len(word)):
+        if word[i] == answer:
+            new_hint.append(answer)
+        else:
+            new_hint.append(hint[i])
+            counter += 1
+    hint = new_hint
 
-while answer != word[3]:
-    answer = input('Введите четвёртую букву: ')
-print('Верно! Четвёртая буква - ' + answer)
+print('Верно, это - ' + word)
+print('Вы ошиблись - ' + str(counter) + ' раз')
+# ПРОСТОЙ ПРИМЕР
+# for letter in word:        
+#     if letter == answer:
+#         print(answer, end='')
+#     else:
+#         print('*', end='')
 
-while answer != word[4]:
-    answer = input('Введите пятую букву: ')
-print('Верно! Пятая буква - ' + answer)
+# 1. программа не оповещает о победе (молчит)
+# 2. загаданно только одно слово (файл вопросов, файл ответов и случайную выборку из них)
+# 3. количество попыток
+# 4. ввести ответ целиком
+# коды возврата
 
-while answer != word[5]:
-    answer = input('Введите шестую букву: ')
-print('Верно! Шестая буква - ' + answer)
-
-answer = ''.join(word)
-print('Вы угадали! Правильный ответ - ' + answer)
