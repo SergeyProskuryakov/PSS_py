@@ -16,10 +16,16 @@ class Adres:
 
     @property
     def adres(self):
-        return 'город ' + self.__gorod + ', улица ' + self.__ulitca + ', дом ' + self.__dom + ', помещение ' + self.__pomeshenie
+        return 'город %(sity)s, улица %(street)s, дом %(building)i, помещение %(room)s' %{
+            'sity': self.__gorod,
+            'street': self.__ulitca,
+            'building': self.__dom,
+            'room': self.__pomeshenie
+        }
     
-class Stroenie(Adres):
-    def __init__(self, god, podiezdy, etaji, adres):
+class Stroenie:
+    def __init__(self, name, god, podiezdy, etaji, adres):
+        self.__name = name
         self.__god = god
         self.__podiezdy = podiezdy
         self.__etaji = etaji
@@ -27,11 +33,18 @@ class Stroenie(Adres):
 
     @property
     def opisanie(self):
-        return 'год постройки - ' + self.__god + ', количество подъездов - ' + self.__podiezdy + ', количество этажей - ' + self.__etaji + ', адрес: ' + self.__adres        
+        return '''%(build)s: \nгод постройки - %(year)i, \nколичество подъездов - %(entrance)i, 
+количество этажей - %(levels)i, \nадрес - %(adress)s''' % {
+            'build': self.__name,
+            'year': self.__god,
+            'entrance': self.__podiezdy,
+            'levels': self.__etaji,
+            'adress': self.__adres.adres  
+        }
 
-dom = Stroenie('1964', '1', '10', Adres('Москва', 'Плюшкина', '4', '7'))
-acad = Stroenie('1976', '3', '6', Adres('Москва', 'Колотушкина', '7', '94'))
-rab = Stroenie('1990', '2', '7', Adres('Москва', 'Пушкина', '1', 'офис-3'))
+dom = Stroenie('дом', 1964, 1, 10, Adres('Москва', 'Плюшкина', 4, '7'))
+acad = Stroenie('академия', 1976, 3, 6, Adres('Москва', 'Колотушкина', 7, '94'))
+rab = Stroenie('работа', 1990, 2, 7, Adres('Москва', 'Пушкина', 1, 'офис-3'))
 
 print(dom.opisanie)
 print(acad.opisanie)
