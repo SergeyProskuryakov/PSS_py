@@ -36,8 +36,8 @@ class Pomeshenie:
 
 class Zritelniy_zal(Pomeshenie):
 
-    def __init__(self, name, shirina, dlina, visota, dveri, okna, ryad, stulya):
-        super().__init__(name, shirina, dlina, visota, dveri, okna)
+    def __init__(self, ryad, stulya, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.__ryad = ryad
         self.__stulya = stulya
 
@@ -47,8 +47,8 @@ class Zritelniy_zal(Pomeshenie):
 
 class Uchebniy_class(Zritelniy_zal):
 
-    def __init__(self, name, shirina, dlina, visota, dveri, okna, stulya, komp):
-        super().__init__(name, shirina, dlina, visota, dveri, okna, stulya)
+    def __init__(self, name, komp, *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
         self.__komp = komp
 
     @property
@@ -57,8 +57,8 @@ class Uchebniy_class(Zritelniy_zal):
 
 class Sportzal(Pomeshenie):
 
-    def __init__(self, name, shirina, dlina, visota, dveri, okna, fizrukov):
-        super().__init__(name, shirina, dlina, visota, dveri, okna)
+    def __init__(self, fizrukov, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self._fizrukov = fizrukov
 
     @property
