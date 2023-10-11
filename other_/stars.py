@@ -57,6 +57,9 @@ my_func(12, 2, 3, 4, 1, 5, 6)
 
 
 
+
+
+
 # def my_func_2 (**n):
 #     for i in n:
 #         if i == str:
